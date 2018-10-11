@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    'use script'
+    // Object.is判断两个值是否相等
+    // ===
+    console.log(Object.is(NaN, NaN));
+
+    let ary = [1, 2, NaN, NaN, 1, 2];
+    // console.log(ary.includes(NaN))
+
+    let arr = [];
+    ary.forEach((item) => {
+        var f = true;
+        for (var i = 0; i < arr.length; i++) {
+            if (Object.is(item, arr[i])) {
+                f = false;
+            }
+        }
+        if (f) {
+            arr.push(item)
+        }
+    });
+    console.log(arr);
+
+    // object.assign(obj1,obj2)
+    //将obj2合并到obj1,返回obj1
+    let obj1 = {
+            a: '1'
+        },
+        obj2 = {
+            b: '1'
+        };
+    console.log(Object.assign(obj1, obj2))
+    console.log(Object.assign(obj1, obj2) == obj1)
+
+    // Object.getOwnPropertyDescriptor()
+    let str = '123'
+    console.log(Object.getOwnPropertyDescriptor(str,'length'))
+
+    //属性的遍历
+    //for in
+    // Object.keys()返回值是数组 包括对象自身(私有属性)所有可枚举的属性
+    // Object.getOwnPropertyNames() 返回值是数组 包括对象自身的(私有属性)所有属性 包括不可枚举属性
+</script>
+
+</html>

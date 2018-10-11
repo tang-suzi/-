@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    'use script'
+    let [f0,f1]=[1];
+    console.log(f0,f1);
+    let [f2,f3=2]=[1];
+    console.log(f2,f3);
+
+    //判断一个位置是否有值 必须是按照三个等号来判断的  如果数组中成员不严格等于undefined默认值不会生效
+    let [f=1] = [undefined];
+    console.log(f)
+
+    function fn (){
+        console.log('aaaaaa');
+    }
+    let [x=fn(),y=0]=[1];
+    // 只要变量所占在数组中的位置不是undefined , fn()根本不会触发执行
+</script>

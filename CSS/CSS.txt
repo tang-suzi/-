@@ -1,0 +1,395 @@
+1.基本语法
+    css规则有两个主要的部分组成: 选择器 以及一条或多条声明(css属性)
+    选择器通常时您需要改变样式的html元素
+    每一条声明由一个属性和一个值组成
+    属性时你希望设置的样式属性 每一个属性有一个值 属性和值被冒号分开
+
+2css引入方式
+1.行内式
+    语法: 写在开始标签里面 打一个空格隔开 style=“声明;声明”
+    通过style这个标签属性 将css健值对直接写入标签内
+    <p style="width:100px;height:100px;background-color:red"></p>
+
+2.内嵌式
+    语法:<style>
+            选择器{
+                声明;
+                声明
+            }
+        </style>
+    使用style标签将css属性名和属性值引入道html页面中, 通常style标签部署放置在head标签中 
+    为什么css样式要放置在head标签中
+        因为代码从上到下执行 如果先加载结构 那么用户看到的就将是干巴巴的内容 而没有通过美化 而加载样式后加载结构 就相当于孩子出生就是穿着衣服的
+
+3.外链式
+    语法:<link rel="stylesheet" type="text/css" href="路径/链接" />
+    rel="stylesheet" 描述当前页面与href所指定文档的关系 即说明的时 href连接的文档时一个新式表
+    type="text/css" 是指定MIME类型 也就是css文档
+    href="路径/链接" 规定被链接文档的位置
+
+4.导入式
+    通过@import ‘url’引入一个独立的css文件
+    语法:<style type="text/css">
+            @import url(style.css)
+        </style>
+        url(style.css) url(规定被链接文档的位置)
+        如果style里面既有内嵌样式又有导入样式 导入式要放在内嵌式的上面 放在下面会报错 导致导入式的样式直接失效
+
+5.外链式和导入式的区别
+    1. link和@import虽然都是引入外部的css文件 但是他们是有天差地别的区别的
+    2. link是html标签 @import完全是css提供的方式 要卸载css文件或者style标签中
+    3. 他们的加载顺序也是有区别的 当一个页面被加载的时候 link引用的css文件会被同时加载 而@import引入的css文件会等页面全部加载完毕之后再加载
+    4. 当使用javascript控制DOM去改变css样式的时候 只能使用link标签 因为@import是不能被DOM控制的
+
+6.CSS命名规范
+    1) 必须使用英文开头 并且开头字母一律小写
+    2) 所有的命名最好都小写
+    3) 尽量不要用缩写英文 除非可以一目了然
+    4) 如果遇到相差不大class或者id 主功能识别字母在前 位置识别字母在后 位置识别字母第一个可大写(如: navTop,menuLeft)
+    5) 遵循驼峰命名法 第一个单词的首字母小写 其余每一个有意义的单词的首字母大写
+    6) 头: header
+       内容: content/container
+       尾: footer
+       导航: nav
+       侧栏: sidebar
+       栏目: column
+       页面外围控制整体布局宽度: wrapper
+       左中右: left center right
+       登陆条: loginbar
+       标志: logo
+       广告: banner
+       页面主体: main
+       热点: hot
+       新闻: news
+       下载: download
+       子导航: subnav
+       菜单: menu
+       子菜单: submenu
+       搜索: search
+       友情链接: friendlink
+       页脚: footer
+       版权: copyright
+       投票: vote
+       合作伙伴: partner
+       滚动: scroll
+       内容: content
+       标签页: tab
+       文章列表: list
+       提示信息: msg
+       小技巧: tips
+       栏目标题: title
+       加入: joinus
+       指南: guild
+       服务: service
+       注册: register
+       状态: status
+
+css选择器
+    基本选择器: 
+        标签选择器: 直接使用元素标签进行选择 权重为1
+        类选择器: 通过元素的类名 来选择元素 一个元素可以有多个类名 都代表这个元素 权重为10
+        ID选择器: 通过元素的ID名 来选择元素 类名是元素ID属性中的属性值 权重为100
+        通配符选择器: 通过*选择全部元素 包括根元素 权重小于1
+            看到class名要想到. 看到id要想到# 
+
+    并集选择器:
+        用来对选择器进行分组 这样 被分组的选择器就可以分享相同的声明 用都好将需要分组的选择器分开
+
+    交集选择器: 
+        如果两种属性同属一个元素的时候 我们可以使用交集选择器来进行元素的准确选择(在class名或者id名前面加上标签名 缩小查找范围)
+            注意 标签名可class/id 名中没有空格隔开
+
+    后代选择器: 
+        通过依据元素在其位置的上下文关系来定义样式 可以使用标记更加简洁 用空格隔开 
+        后代选择器尽量不要超过三个 没有必要把每一个层级都写出来 只需要写出关键节点即可
+    
+    子代选择器:
+        与后代选择器相比 子元素选择器只能选择作为某元素子元素的元素 符号为> 只作用与儿子这一代 
+
+    相邻兄弟选择器:
+        相邻兄弟选择器可以选择紧接在另一个元素后的元素 且二者有相同父元素 + 加号前边的选择器只是用来作为我们查找兄弟的参照标签 并不参与样式的影响
+
+    兄弟选择器:
+        ~ 所有兄弟元素
+
+    属性选择器: 
+        对带有指定属性的HTML元素设置样式 权重为10
+        可以为拥有指定属性的HTML元素设置样式 而不仅限于class和ID属性
+        属性选择器: 带有title属性的所有元素设置样式
+        [title]{color: red}
+        属性和值选择器 为所有title=‘aaa’的元素设置样式
+        [title=aaa]{color: red}
+        设置表单的样式
+        input[type='text']{width: 150px}
+
+    伪类选择器: 权重: 10<权重<11
+        a:link {color: red} 未访问的链接
+        a:visited {color: red} 已访问的链接
+        a:hover {color: red} 鼠标移动到链接上
+        a:active {color: red} 选定的链接
+
+        :active 向被激活的元素添加样式
+        :focus 向拥有键盘输入焦点的元素添加样式
+        :hover 当鼠标悬浮在元素上方时 向元素添加样式
+        :link 向未被访问的链接添加样式
+        :visited 向已被访问的链接添加样式
+        :first-child 向元素的第一个子元素添加样式
+        :lang 向带有制定lang属性的元素添加样式
+
+    CSS3中新增的选择器
+        CSS3新增的伪类有哪些?
+            :not 排除
+                :not(:last-child){除了最后一个没有 其余的都有}
+            :last-child 最后一个子元素
+            :nth-child(n){第n个有} n表示第几个 odd 奇数 even 偶数
+            标签名:only-child 仅仅只有一个
+            :nth-last-child(n) 倒数第n个元素
+            标签名:first-of-type 匹配同类型中的第一个同级兄弟元素
+            :last-of-type 最后一个同级兄弟元素
+            :only-of-type 只有一个同级兄弟元素
+            :nth-of-type(n) 第n个同级兄弟元素
+            :nth-last-of-type(n) 倒数第n个同级兄弟元素
+            :empty 空内容
+            E:checked  匹配用户界面上处于选中状态的元素E(用于radio和checkbox)
+
+    伪元素选择器:
+        :first-line 伪元素用于向文本的首行设置特殊样式 只能用于块级元素
+        :first-letter 伪元素用于向文本的首字设置特殊样式
+        :before 在元素的内容前面插入新内容
+        :after 在元素内容后面插入新内容
+        只要碰到:before 和:after 就要加content=“” 只要是宽度不起作用 就加display:block独占一行/display:inline-block不独占一行
+
+    CSS权重和基本规则
+        权重记忆口诀: 从0开始 一个行内样式+1000 一个id+100 一个属性选择器/class或者伪类+10 一个元素名或者伪元素+1
+            规则: 相同的权重 以后面出现的选择器为最后规则
+                 不同的权重 权重值高则生效
+            权重大小: !important(权重:1000)>id>class>标签>*
+
+            基本选择器
+                标签选择器 权重为1
+                class选择器 权重为10
+                id选择器 权重为100
+                通配符选择器 权重0-1
+
+                后代
+                子代
+                交集
+                并集
+                相邻兄弟
+                兄弟
+                =》 权重: 每个单独的选择器的权重相加之和
+
+                属性
+                伪类
+                伪元素
+
+    css中可以和不可以继承的属性
+        一、无继承性的属性
+            1.display: 规定元素应该生成的框的类型
+            2.文本属性:
+                vertical-align 垂直文本对齐
+                text-decoration 规定添加到文本的装饰
+                text-shadow 文本阴影效果
+                white-space 空白符的处理
+                unicode-bidi 设置文本的方向
+            2.盒子模型的属性: width、height、margin、margin-top、margin-right、margin-bottom、margin-left、border、border-style、border-top-style、border-right-style、border-bottom-style、border-left-style、border-width、border-top-widht、border-right-width、border-bottom-style、border-left-style、color、border-top-color、border-right-color、border-bottom-color、border-left-color、border-top、border-right、border-bottom、border-left、padding、padding-top、padding-right、padding-bottom、padding-left
+            4.背景属性: background、background-color、background-image、background-repeat、background-position、background-attachment
+            5.定位属性: float、clear、position、top、right、bottom、left、min-width、min-height、max-width、max-height、overflow、clip、z-index
+            6.生成内容属性: content、counter-reset、counter-increment
+            7.轮廓样式属性: outline-style、outline-width、outline-color、outline
+            8.页面样式属性: size、page-break-before、page-break-after
+            9.声音样式属性: pause-before、pause-after、pause、cue-before、cue-after、cue、play-during
+        二、有继承性的属性
+            1.字体系列属性
+                font:组合字体
+                font-family: 规定元素的字体系列
+                font-weight: 设置字体的粗细
+                font-size: 设置字体的尺寸
+                font-style: 定义字体的风格
+                font-variant: 设置小型大写字母的字体显示文本,这意味着所有的小写字母均会被转换为大写 但是所有有使用小型大写字体的字母与其余文本相比 其字体尺寸更小
+                font-stretch: 对当前的font-family进行伸缩变形 所有主流浏览器都不支持
+                font-size-adjust: 为某个元素规定一个aspect值 这样就可以保持首选字体的x-height
+            2.文本系类属性
+                text-indent: 文本缩紧
+                text-align: 文本水平对齐
+                line-height: 行高
+                word-spacing: 增加或减少单词间的空白(字间隔)
+                letter-spacing: 增加或减少字符间的空白(字符间距)
+                text-transform: 控制文本大小写
+                direction: 规定文本的书写方向
+                color: 文本颜色
+            3.元素可见性: visibility
+            4.表格布局属性: caption-side、border-collapse、border-spacing、empty-cells、table-layout
+            5.列表布局属性: list-style-type、list-style-image、list-style-position、list-style
+            6.生成内容属性: quotes
+            7.光标属性: cursor
+            8.页面样式属性: page、page-break-inside、windows、orphans
+            9.声音样式属性: speak、speak-punctuation、speak-numeral、speak-header、speech-rate、volume、voice-family、pitch、pitch-range、stress、richness、azimuth、elevation
+
+        三、所有元素可以继承的属性
+            1.元素可见性: visibility
+            2.光标属性: cursor
+ 
+        四、内联元素可以继承的属性
+            1.字体系列属性
+            2.除text-indent、text-align之外的文本系列属性
+        
+        五、块级元素可以继承的属性
+            1.text-indent、text-align
+
+    盒子模型
+        内边距会影响盒子在浏览器中的实际大小
+
+        垂直边距重叠问题
+            取大值 并不是他们相加之和 谁大听谁的
+
+        margin兼容问题
+            大盒子里面嵌套小盒子 给小盒子加margin-top值 不但没有实现和大盒子之间的间距 反而传递到大盒子上面 导致整体下移
+                大盒子加overflow:hidden 解决macgin-top的传递问题
+                小盒子float
+                大盒子加padding-top:1px 大盒子高度减1 
+
+            内外边距的区别
+                1.margin外边距 padding内边距
+                2.margin不会影响最后元素的实际宽高
+                padding会影响元素的实际宽高 如果要不影响 我们需要在width、height里面减去padding对应的值
+                3.margin主要用来控制元素和元素之间的间距
+                padding不能控制和元素和另一个元素间的间距 只能控制它里面的元素
+
+        盒子模型的计算:
+            元素实际宽度: width+padding-left+paddingright+border-left+border-right
+            元素实际高度: height+padding-top+padding-bottom+border-top+border-bottom
+            元素的实际大小只会受padding和border的影响 和margin没有关系 如果加了padding 和border的值 要在width 和height的值上减去padding和border的值 否则内容会溢出
+
+    背景background
+        background-color
+
+        background-image
+
+        background-repeat
+
+        background-position
+
+        background-attachment
+
+        background-size
+
+        background-origin
+
+        background-clip
+
+        background复合属性
+            background: color url repeat position attachment
+            CSS3中新增的背景属性
+                background-size 背景尺寸
+                background-origin 背景图片显示的坐标原点
+                background-clip 背景图片之外的区域开始裁剪图片
+
+        雪碧图技巧: background-position:  X轴 Y轴
+            雪碧图的坐标要是负值
+
+    overflow:hidden的作用
+        1.溢出隐藏
+        2.清浮动
+        3.解决margin-top问题
+
+            单行文本出现省略号
+                overflow:hidden 溢出隐藏
+                white-space: nowrap 强制文字不换行
+                text-overflow: ellipsis 文字隐藏方式: 以省略号的方式隐藏
+            多行文本出现省略号
+                注意高度限制
+                display:-webkit-box 弹性盒模型
+                -webkit-box-orient:vertical 规定元素的排列方式 垂直排列
+                -webkit-line-clamp:2 文字显示行数
+                overflow:hidden
+
+    float元素的特点
+        1.浮动元素在一行显示
+        2.设置属性值为left时 浮动元素会依次从父级盒子的左侧向右排布 设置属性值为right时 浮动元素会依次从父级盒子右侧向左排布
+        3.浮动元素自动具有块级元素的属性
+        4.浮动元素脱离文档流
+        5.浮动元素内的子元素 不会继承浮动属性
+        6.浮动元素下面的元素不能识别浮动元素的高度和位置
+        7.所有的元素都可以使用浮动属性
+
+    文档流和脱离文档流
+        文档流 指的是元素排版布局过程中 元素会自动从左往右 从上往下的流式排列 并最终窗体自上而下分成一行行 并在每行中从左至右的顺序排放元素
+        每个非浮动块级元素都独占一行 浮动元素则按照规定浮动在行的一端 若当前行容不下 则另起新行再浮动
+        内联元素也不会独占一行 几乎所有元素(包括块级 内联和列表元素)均可生成子行 用于摆放子元素
+        标准文档流等级: 分为两个等级 块级元素和行内元素
+        脱离文档流: 文档流内的正常元素识别不到这个元素(脱离文档流的元素相当于平行漂浮在文档流之上)
+
+    float元素产生的影响
+        1.父元素设置背景颜色不起作用
+        2.父元素设置内边距属性不会被撑开
+        3.父元素设置边框属性不会被撑开
+
+    解决float产生的影响的方法-清浮动
+        1.给浮动元素的父级元素添加固定的高度
+        2.给浮动元素的父元素添加溢出隐藏属性overflow:hidden
+        3.在最后一个浮动元素后面添加一个块级元素 这个块级元素带有clear:both属性
+            clear清除浮动元素对文档流内元素的影响
+            left清除float为left的影响
+            right清除float为right的影响
+            both清除float所有的影响
+            inherit从父元素上继承该属性值
+        4.clearfix清浮动
+            利用伪元素:after清浮动的固定代码 只要清浮动我们在浮动元素的父元素上加上一个.clearfix即可
+            .clearfix:after {
+                content: '';
+                display:block;
+                height: 0; /*防止在低版本浏览器中默认height:1px的情况*/
+                font-size:0;
+                clear: both;
+                overflow:hidden;/*溢出隐藏*/
+                visibility: hidden/*所有可见性的元素隐藏*/
+            }
+    隐藏元素
+        1.透明度 opacity:0; [0-1]
+        2.display: none;
+        3.width:0和overflow:hidden
+        4.line-height:0和overflow:hidden(没有设置高度的情况下)
+        5.visibility:hidden; 让所有可见性的元素隐藏
+        6.margin/padding足够大 只要能让他消失即可
+        7.利用transform属性 让translate坐标设置足够大
+
+    绝对定位-position:absolute
+        特点: 
+            脱离文档流
+            可以设置参照物 参照物必须是其父元素(直系父级) 如果直接父级没有会一直往上查找到最外层的根元素为止
+            绝对定位元素会脱离文档流 不占位 导致后面的元素会往前跑 占领它的位置
+            有高度和宽度的情况下 top和bottom同时有值 top生效left和right同时有值 left生效
+            没有宽度和高度的情况下 top和bottom同时设置值的情况下 会将在这个盒子拉大 上下值都起作用 左右同理
+            可以设置层级关系z-index属性
+            相对参照物只要是定位元素就行 优先选相对定位 position:relative
+
+    相对定位 position:relative
+        不会脱离文档流 占位 所有后面的元素不会往前跑
+        可以设置上下左右四个方位
+        参照物 自己本身
+        可以设置z-index
+
+    固定定位 position:fixed
+        脱离文档流
+        参照物是浏览器的可视窗口
+        任何元素都可以设置固定定位
+        可以设置top/bottom/left/right四个方位
+        可以通过z-index改变层级
+
+    定位的相同点和不同点
+        相同点 
+            可以top/buttom/left/right四个方位值 如果同时有top/bottom 只有top起作用 如果同时有left/right 只有left起作用
+            都设置z-index改变层级
+
+        不同点
+            1.是否脱离文档流
+                绝对定位: 是
+                相对定位: 否
+                固定定位: 是
+                只有相对定位没有脱离文档流 绝对定位和固定定位都会脱离文档流 不占位
+            2.参照物:
+                绝对定位: 是具有定位元素的父级元素 如果直接父级没有定位元素 则会往上级 直到找到我们的根元素html为止
+                    一定要给他的直接父元素加相对参照物(position:relative)
+                相对定位: 自己本身
+                固定定位: 整个浏览器可视窗口

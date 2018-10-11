@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>let</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    'use script'
+    /*
+    console.log(a);//undefined 只声明未定义
+    var a = 1;
+    console.log(a);
+    */
+
+    //let定义变量没有变量的提升(没有预解释)
+    //console.log(a);//a is not defined
+    let a = 1;
+    console.log(a); //1
+    function fn() {
+        console.log(b); // b is not defined
+        let b = 0;
+    }
+    //fn();
+
+    //2.let 定义的变量不能重复定义(不管函数还是let定义变量都不可以重复定义)
+    //    var b=12;
+    //    var b=13;
+    //    function b(){
+    //        console.log(b);
+    //    }
+    //    console.log(b);
+    //    b()// b is not a function
+    // let b = 12;
+    // // let b=13;
+    // function b() {
+
+    // }
+    // console.log(b);
+
+    //3.虽然不进行预解释 但是代码执行前上来也是先将定义的变量提前过滤一遍 一旦发现不合法 就直接报错 代码也不会执行
+    /*
+    console.log(A); //为定义
+    let A = 10;
+    let A = 11; //报错
+    */
+</script>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    'use script'
+    //函数的参数是可以加默认值的 只有不传实参的时候才会走默认值
+    function fn1(x = 'x', y) {
+        console.log(x, y)
+    }
+    fn1(1, 2);
+
+    function fn2({
+        x = 0,
+        y = 0
+    } = {}) {
+        return {
+            x,
+            y
+        }
+    }
+    console.log(fn2({
+        x: 1
+    }))
+
+    function fn3({
+        x,
+        y
+    } = {
+        x: 0,
+        y: 0
+    }) {
+        return {
+            x,
+            y
+        }
+    }
+    console.log(fn3({
+        x: 1
+    }));
+
+    //一般都会把默认值放后面
+    function fn4(x, y = 1, z) {
+
+    }
+    fn4(1, 2, 3);
+
+    function fn5() {
+        // arguments.length 实参的长度
+        console.log(arguments.length)
+    }
+    fn5(1, 2, 3, 4, 5);
+
+    function fn6(x = 0, y = 1, z) {
+
+    }
+    fn6();
+    // fn6.length 如果是没有默认值的情况下形参的长度 如果有默认值 默认值的参数的位置
+    console.log(fn6.length)
+
+</script>
+
+</html>

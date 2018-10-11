@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    'use script'
+    let obj = {a1:[1,2,3],a2:"123"};
+    let {a2,a1:[x,y]} = obj
+    console.log(a2,x,y)
+
+    let obj1 = {s:{n:'1'},n:[1,'2',3,'4'],m:[[1]]};
+    let {m:[x1],s:{n},n:[,...m2]} = obj1;
+    console.log(x1,n,m2)
+</script>

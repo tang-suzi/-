@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //解析url问号传参的值
+        var str = 'https://www.baidu.com/s?wd=javascript&rsv_spt=1&issp=1';
+        // {wd:'javascript',rsv_spt:1,issp:1}
+
+        //方案1
+        var questionIndex = str.indexOf('?');
+        str = str.substring(questionIndex + 1);
+        console.log(str);
+        var ary = str.split('&');
+        console.log(ary);
+        var obj = {};
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            // console.log(cur);
+            var curAry = cur.split('=');
+            // console.log(curAry);
+            key = curAry[0];
+            val = curAry[1]
+            obj[key] = val;
+        }
+        console.log(obj)
+
+        // function queryURLParameter(url) {
+        //     var queryIndex = url.indexOf('?'),
+        //         obj = {};
+        //     if (queryIndex === -1) {
+        //         return obj;
+        //     }
+        //     url = url.substr(queryIndex + 1);
+        //     var ary = url.split('&');
+        //     for (var i = 0; i < ary.length; i++) {
+        //         var curAry = ary[i].split('=');
+        //         obj[curAry[0]] = curAry[1];
+        //     }
+        //     return obj;
+        // }
+
+        // 正则处理
+        // String.prototype.myQueryURLParameter = function myQueryURLParameter(){
+        //     var obj = {},
+        //     reg=/([^=?&]+)=([^=?&]+)/g;
+        //     this.replace(reg, function () {
+        //         var arg = arguments;
+        //         obj[arg[1]] = arg[2];
+        //     });
+        //     return obj;
+        // };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+行内元素 a button span big datalist em(i) input mark select option porgress s strong b small sup sub textarea u 
+1.不独占一行
+2.排列方式 从左往右
+3.设置宽高不起作用 如要起作用 需要转换为块/行内块
+4.不设置宽高是它本身内容的宽度
+5.天生自带 display:inline
+6.行内元素不能嵌套块级元素(特殊 a)
+7.a标签里面不要嵌套a标签 即使嵌套 浏览器也会解析为并列元素
+
+块级元素 table h1-6 div dl dt dd figure figcaption hr ul li nav p form
+1.独占一行
+2.排列方式 从上往下
+3.可以设置宽高以及盒子模型的其他属性
+4.不设置宽高的情况下 宽度是父元素的宽度 高度是内容的高度
+5.天生自带 display:block
+6.块级元素可以嵌套行内
+7.ul ol 下面只能是li dl 下面只能是dt dd
+8.p标签不能嵌套任何的块级元素 可以嵌套行内元素的
+
+行内块级元素 天生自带 display:inline-block
+img input 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    'use script'
+    //赋的值不是一个对象是个其他数据类型的值 会默认将其他数据类型转为对象
+    let {x,y,__proto__}=1;//{__proto__:Number}
+    console.log(x,y,__proto__)//undefined undefined
+    console.log(Object(1))
+
+    console.log(Object([1,2,3]))
+    let {n,m,length}=[1,2,3];
+    console.log(length)
+
+    let a;
+    // {a}={a:'a'};
+    //javascript引擎会将{a}理解成一个代码块 为了避免错误 不要将{}写在行首
+    eval("({s:'ss',d:'d'})");
+    ({a}={a:'a'});
+    console.log(a);
+    //null 和 undefined 无法转换为对象, 所以对象解构赋值为一个null和undefined 会报错
+    // let {p:xx}=undefined;
+    // let {p:yy}=null;
+</script>

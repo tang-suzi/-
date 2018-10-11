@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    // console.log(a); //undefined
+    // var a = 12;
+
+    // function fn() {
+    //     console.log(a); //undefined
+    //     var a = 13;
+    // }
+    // fn();
+    // console.log(a) //12
+
+    // console.log(a); //undefined
+    // var a = 12;
+    // function fn(){
+    //     console.log(a); //12
+    //     a = 13;
+    // }
+    // fn();
+    // console.log(a) //13
+
+    // console.log(a); //程序报错 a is not defined
+    // a = 12;
+    // function fn(){
+    //     console.log(a);
+    //     a = 13;
+    // }
+    // fn();
+    // console.log(a);
+
+    // var foo = 1;
+    // function bar() {
+    //     if (!foo) {
+    //         var foo = 10;
+    //     }
+    //     console.log(foo); // 10
+    // }
+    // bar();
+
+    //全局下的变量提升 var n; var c; a = AAAFFF111;
+    // var n = 0;
+    // function a (){
+    //     //私有作用域 var n; b = BBBFFF111
+    //     var n = 10;//n=11 n=12
+    //     function b(){
+    //         //私有作用域
+    //         n++;//n是其上级作用域的
+    //         console.log(n);
+    //     }
+    //     b();
+    //     return b; //return BBBFFF111
+    // }
+    // var c = a();//BBBFFF111
+    // c();
+    // console.log(n);//0
+
+    //变量提升 var a;var b;var c;test=AAAFFF111;
+    // var a = 10,
+    //     b = 11,
+    //     c = 12;
+    // function test(a) {
+    //     //私有作用域 a=10;var b;
+    //     a = 1; //私有A=1
+    //     var b = 2; //私有B=2
+    //     c = 3; //全局C=3
+    // }
+    // test(10);
+    // console.log(a, b, c); //10 11 3
+
+    //变量提升 var a; <=>window.a = undefined
+    // if (!('a' in window)) { //条件不成立 'a' in window === true
+    //     var a = 1;
+    // }
+    // console.log(a); //undefined
+
+    //变量提升: var a; b = AAAFFF111
+    // var a = 4;
+    // function b (x,y,a){
+    //     //私有作用域 x=1,y=2,a=3
+    //     console.log(a); //3
+    //     arguments[2]=10;
+    //     console.log(a); //10
+    // }
+    // a=b(1,2,3); //b没有return
+    // console.log(a); //undefined
+    //在js的非严格模式下 函数的实参集合与形参变量存在‘映射’关系 不管其中谁改变了 另外一个都会跟着改变
+    //js严格模式下 arguments和形参变量的映射关系被切断了 相互之间互不干扰
+
+    // 变量提升 var foo;
+    // var foo = 'hello';
+    // (function(foo){
+    //     //私有作用域: foo = ‘hello’(我们的foo和外面的foo是不同的变量)
+    //     console.log(foo);
+    //     var foo = foo||'world';
+    //     console.log(foo);
+    // })(foo);//把全局foo的值当作实参传递给私有作用于的形参
+    // console.log(foo);
+    //&&逻辑与 ||逻辑或
+    //1.在条件判断当中 && 所有都为真才为真 || 只要有一个条件为真整体就为真
+    //2.在赋值操作中 || A||B 首先看A的真假 A为真返回的是A的值,A为假返回B的值(不管B是啥)
+    //  1 || 2 =>1
+    //  0 || false => false
+    // &&: A && B 首先看A的真假 A为假返回A的值 A为真返回B的值
+    //  1 && 2 => 2
+    //  0 && false => 0
+
+    //3.逻辑与的优先级高于逻辑或
+
+    // function fn (num, callBack){
+    //     //如果num没有传递值 让其默认值是0
+    //     // if(typeof num === 'undefined') num = 0;
+    //     num = num || 0; //真实项目中我们应用逻辑或实现默认值的设置操作
+
+    //     //如果callBack 传递的是一个函数, 就把这个函数执行
+    //     // if(typeof callBack === 'function'){
+    //     //     callBack();
+    //     // }
+    //     callBack && callBack();
+    // }
+    // fn(100, function(){})
+
+    // var a = 9;
+    // function fn (){
+    //     a=0;
+    //     return function(b){
+    //         return b+a++;
+    //     }
+    // }
+    // var f=fn();
+    // console.log(f(5)); //5
+    // console.log(fn()(5)); //5
+    // console.log(f(5)); //6
+    // console.log(a) //2
+
+    // var ary = [1,2,3,4];
+    // function fn(ary){
+    //     ary[0] = 0;
+    //     ary = [0];
+    //     ary[0] = 100;
+    //     return ary;
+    // }
+    // var res = fn(ary);
+    // console.log(ary);  // [0,2,3,4]
+    // console.log(res);  // [100]
+
+    function fn (i){
+        return function (n) {
+            console.log(n + (i++));
+        }
+    }
+    var f = fn (10);
+    f(20);
+    fn(20)(40);
+    fn(30)(50);
+    fn(30)
+</script>
+
+</html>

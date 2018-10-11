@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    'use script'
+    let set = new Set([1,2,3,2,3,3,3,3]);
+    console.log(set);
+    //size 当前实例的长度
+    //add(),增加 之前没有的话才可以加上(加在后面) 返回值是当前实例 可以实现链式写法
+    console.log(set.add(5).add(4))
+    //has() 判断有没有某一项 返回值 true/false
+    console.log(set.has(1))
+    //delete() 删除 返回值是true/false
+    console.log(set.delete(1))//true
+    console.log(set.delete(7))//false
+    //clear() 清空 没有返回值(undefined)
+    console.log(set.clear())
+
+    //实现两个数组并集
+    let arr1 = [1,2,3,4,5,6];
+    let arr2 = [2,4,6,8,10];
+    function bj(arr1,arr2){
+        return [new Set([...arr1,...arr2])]
+    }
+    console.log(bj(arr1,arr2));
+    
+    //交集
+    function jj(arr1,arr2){
+        return arr1.filter((item)=>{
+            return arr2.includes(item)
+        })
+    }
+    console.log(jj(arr1,arr2))
+
+    //差集
+    function cj(arr1,arr2){
+        return bj(arr1,arr2).filter((item)=>{
+            return !jj(arr1,arr2).includes(item)
+        })
+    }
+    console.log(cj(arr1,arr2))
+    
+    </script>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+
+</html>
+<script>
+    'use script'
+    //{},是一个私有作用域
+    // function fn() {
+    //     let a = 0;
+    //     console.log(a);
+    // }
+    // fn();
+    //if(){}
+    //for(){}
+    /*
+    let a = 10;
+    if (a) {
+        console.log(a); // a is not defined
+        let a = 1;
+        console.log(a);
+    }
+    */
+
+    let oList = document.getElementsByTagName('li')
+    //     for (var i =0;i<oList.length;i++) {
+    //         oList[i].onclick=function(){
+    //             console.log(i) //4 可以用闭包来解决
+    //         }
+    //     }
+
+    for (let i = 0; i < oList.length; i++) {
+        oList[i].onclick = function () {
+            console.log(i)
+        }
+    }
+    let a = 0;
+
+    function fn() {
+        //console.log(a); // a is not defined
+        // let a = 2;
+        console.log(a)
+    }
+    fn()
+
+    // 自执行函数
+    {
+        let a = 0
+        console.log(a);
+    }
+    let obj = {};
+    //注意: eval将字符串转换为对象的时候 一定要加一个()
+</script>

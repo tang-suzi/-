@@ -1,0 +1,17 @@
+js跨域 是指通过js在不同域之间进行数据传输或通信 比如用ajax想一个不同的域请求数据,或者通过js获取页面中不同域的框架中的数据 只要协议 域名端口有任何一个不同 都被当作是不同域
+解决跨域问题的方法
+    1.jsonp跨域
+        在js中,直接利用XMLHttpRequest请求不同域上的数据时,是不可以的 但是 在页面上引入不同于上的js脚本文件是可以的 jsonp正是利用这个特性来实现的
+        比如 有一个a.html页面 它里面的代码需要利用ajax获取一个不同域上的json数据 假设这个json数据地址是http://example.com/data.php 那么a.html中的代码就可以这样:
+        <script>
+            function dosomething(jsondata){
+                //处理获得的json数据
+            }
+        </script>
+        <script src="http://example.com/data.php?callback=dosomething"></script>
+
+    2.document.domain
+
+    3.window.name
+
+    4.window.postMessage

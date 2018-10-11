@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            background-color: #ff0000;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li>01</li>
+            <li>02</li>
+            <li>03</li>
+        </ul>
+        <!-- 注释 -->
+        <div>内容1</div>
+        <div>内容2</div>
+        <div>内容3</div>
+    </div>
+    <div id="box2">2</div>
+    <script>
+        console.log(box.childNodes)
+        console.log(box.children)
+        console.log(box.lastChild)
+        console.log(box.lastElementChild)
+        // 创建
+        var oDiv = document.createElement('div');
+        oDiv.id = 'div1';
+        // document.body.appendChild(oDiv);
+        document.body.insertBefore(oDiv,box2);
+        
+    </script>
+</body>
+</html>

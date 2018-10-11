@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    'use script'
+    //Array(), 将传进来的值变成数组返回
+    //注意 只传一个参数n,代表返回数组的长度
+    console.log(Array(1,2,3,4));
+    console.log(Array(4))
+    //Array.of(), 跟Array() 一样 只有一点区别 就是传一个参数的时候返回的就是当前参数组成的数组
+
+    //Array.form() 参数: 数组或者类数组 返回值: 新数组
+    // 一般用来将类数组变为数组
+    let ary = [1,2,3,4];
+    let newAry = Array.from(ary);
+    function toArray(){
+       return Array.from(arguments)
+    }
+    console.log(toArray('a','v',2,3))
+</script>

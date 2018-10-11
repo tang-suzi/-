@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    'use script'
+    let str = 'bbb'
+    document.body.innerHTML = '<h1>' + str + '</h1>';
+
+    let str1 = `<h1>${str}</h1>`
+    document.body.innerHTML += str1;
+    // console.log(str1)
+
+    //保留换行和空格
+    console.log('hahahahah\nhahhahahah');
+    let s1 = `hahahaha
+    hahahah
+    hahahah`
+
+    console.log(s1)
+
+    //\`
+    console.log(`sss\`123`)
+
+    //{可以实现运算}
+    let x = 1;
+    let y = 2;
+    console.log(`${x}+${y}=${x+y}`);
+
+    //调用函数
+    function fn(x){
+        return x
+    }
+    let s2 = 'xxx'
+    console.log(`函数fn输出的结果是${fn(s2)}`);
+
+    let s3 = 'return'+'`Hello ${wd}`'
+
+    // hello aaa
+    let fun = new Function('wd',s3);
+    console.log(fun('aaa'))
+</script>

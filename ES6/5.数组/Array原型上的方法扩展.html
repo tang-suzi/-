@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    'use script'
+    //1. copyWithin(target,start,end)
+    //target: 必填 从该位置开始替换数据
+    //start: 选填 默认值0 从该位置开始读取数据
+    //end: 选填 默认值是数组的长度 到该位置前停止读取数据
+    //返回值 替换后的数组
+    //原数组改变 超出部分不要
+
+    let ary = [1, 2, 3, 4, 5, 6, 7, 8];
+    // console.log(ary.copyWithin(0,1,5))
+    console.log(ary.copyWithin(2, 4, 6))
+
+    //2.find findIndex
+    // item: 当前项
+    // index: 索引
+    // input: 原数组
+    //find 先遍历数组 一项一项的执行 一旦函数返回值是true 停止查找 返回当前项,如果一直到最后一项还没有返回true 最终的结果就是undefined
+
+    console.log(ary.find(function (item, index, input) {
+        // return false;
+        // return true;
+        return item === 6;
+    }))
+    // findIndex 返回值是当前项的索引 一直到最后都没有返回true的最终结果就是undefined
+    //fill(value,start,end): 填充数组
+    //value: 必填, 填充的值
+    //start: 开始填充的位置 默认值是0 可选的
+    //end: 停止填充的位置 可选的 不包括当前项
+    let arr = [1,2,3,4];
+    console.log(arr.fill(1,2,3));
+
+    //得到有7个1 的数组
+    Array(7).fill(1)
+
+    // includes: 判断数组中有没有某一项 返回值是true/false
+    // indexOf LastIndexOf
+    // if(indexOf)
+    arr.includes(1)
+</script>

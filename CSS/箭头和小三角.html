@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 三角箭头原理:正方形的任意相邻的两条边线 然后旋转一定角度 得到我们需要的任意方向的箭头 小三角的大小由正方形的宽高控制 粗细由border宽度控制 */
+        .arrow{
+            width: 20px;
+            height: 20px;
+            border-top: 3px solid #000;
+            border-right: 3px solid #000;
+            transform: rotate(45deg);
+        }
+        /* 三角形的原理:利用border的三个属性: border-width/border-style/border-color去实现 宽度和高度要为0 实现一个有小三角组成的正方形 要啥方向的三角形 只需要保留这个方向的颜色色值 其余的方向颜色色值设为透明即可
+        三角形的大小 由border-width 边框线的宽度去控制
+        三角形的颜色 由border-color边框线的颜色去控制
+        三角形的方向 */
+        .triangle{
+            width: 0;
+            height: 0;
+            border-width: 20px;
+            border-style: solid;
+            border-color: #000000 transparent transparent transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="arrow"></div>
+    <div class="triangle"></div>
+</body>
+</html>

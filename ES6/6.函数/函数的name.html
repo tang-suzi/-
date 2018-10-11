@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    'use script'
+
+    function fn() {
+        console.log(this)
+    }
+    console.log(fn.name)
+    let fn1 = function(){
+
+    }
+    console.log(fn1.name)
+    console.log((function(){}).name)
+    //bind --> bound
+    let obj = {}
+    var fn2 = fn.bind(obj)
+    fn2()
+    console.log(fn2.name);//bound fn
+
+    //new function 构造函数创建的function --> anonymous
+    let f=new Function('n','return n');
+    console.log(f.name)//anonymous
+</script>
+
+</html>
